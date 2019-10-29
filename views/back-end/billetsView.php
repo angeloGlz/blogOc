@@ -57,7 +57,7 @@
 		  	<div class="sidebar content-box" style="display: block;">
                 <ul class="nav">
                     <!-- Main menu -->
-                    <li class="current"><a href="index.php"><i class="glyphicon glyphicon-home"></i> billets</a></li>
+                    <li class="current"><a href="index.php?action=listBillets"><i class="glyphicon glyphicon-home"></i> billets</a></li>
                     <li><a href="index.php?action=listBillets"><i class="glyphicon glyphicon-envelope"></i> Commentaires</a></li>
                     <li><a href="index.php?action=publierBillet"><i class="glyphicon glyphicon-pencil"></i> Publier</a></li>
                 </ul>
@@ -83,6 +83,7 @@
 						</div>
 						
 						<div class="imgBillet">
+
 							<?php if (!empty($billet->image())) {
 								echo '<img src="public/images/'.$billet->image().'">';
 							}  ?>
@@ -91,7 +92,7 @@
 							<form method="POST" action="index.php">
 								<input type="hidden" name="action" value="delete">
 								<input type="hidden" name="idbillet" value="<?php echo $billet->id(); ?>">
-								<input type="submit" value="supprimer">
+								<input type="submit" class="submitDelete" value="supprimer">
 							</form>
 							<form method="POST" action="index.php">
 								<input type="hidden" name="action" value="edit">
@@ -120,8 +121,9 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://code.jquery.com/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="../public/styles/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../public/styles/js/js_back/custom.js"></script>
+    <script src="public/styles/bootstrap/js/bootstrap.min.js"></script>
+    <script src="public/js/js_back/jsAdd.js"></script>
+    <script src="public/styles/js/js_back/custom.js"></script>
 
   </body>
 </html>

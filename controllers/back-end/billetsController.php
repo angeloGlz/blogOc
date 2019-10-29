@@ -1,13 +1,13 @@
 <?php
-	require('models/BilletManager.php');
-	require('models/Billet.php');
+	require('models/back-end/BilletManager.php');
+	require('models/back-end/class/Billet.php');
 
 	function listBillets(){
 
 		$billetsManager = new BilletManager();
 		$listBillets = $billetsManager->getBillets();
 
-		require('views/afficherListBillets.php');
+		require('views/back-end/billetsView.php');
 	}
 
 
@@ -25,6 +25,7 @@
 			publication($billet);
 		}
 		else{
+			$_SESSION['error_billet'] = "Le titre éxiste déja";
 			publierBillet();
 		}
 	}
@@ -60,7 +61,7 @@
 
 
 	function publierBillet(){
-		require('views/publierBillet.php');
+		require('views/back-end/publicationView.php');
 	}
 
 
@@ -76,7 +77,7 @@
 		}
 		else{
 			$billet1 = new Billet($billet);
-			require('views/editBillet.php');
+			require('views/back-end/editView.php');
 		}
 
 		

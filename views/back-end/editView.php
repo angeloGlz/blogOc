@@ -60,7 +60,7 @@
             <div class="sidebar content-box" style="display: block;">
                 <ul class="nav">
                     <!-- Main menu -->
-                    <li class="current"><a href="index.php"><i class="glyphicon glyphicon-home"></i> billets</a></li>
+                    <li class="current"><a href="index.php?action=listBillets"><i class="glyphicon glyphicon-home"></i> billets</a></li>
                     <li><a href="index.php?action=listBillets"><i class="glyphicon glyphicon-envelope"></i> Commentaires</a></li>
                     <li><a href="index.php?action=publierBillet"><i class="glyphicon glyphicon-pencil"></i> Publier</a></li>
                 </ul>
@@ -77,12 +77,13 @@
                             <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a>
                         </div>
                     </div>
-                    <form method="POST" action="index.php" id="formSummerNote" enctype="multipart/form-data">
-                        <input type="hidden" name="action" value="checkBillet" />
-                        <textarea class="summernote" name="titre" placeholder="Entrer votre titre ..."></textarea>
-                        <textarea class="summernote" name="texte" placeholder="Entrer votre texte ..."></textarea>
-                        <input type="file" name="image" class="inputFile">
-                        <input type="submit" name="publier" class="btn btn-primary btn_publication" value="Publier">
+
+                    <form method="POST" action="index.php" id="formSummerNote">
+                        <input type="hidden" name="action" value="saveEdit">
+                        <input type="hidden" name="idbillet" value="<?php echo $billet1->id() ?>" >
+                        <input class="inputTitle" type="text" name="title" placeholder="Titre..." value ="<?php echo $billet1->titre(); ?>">
+                        <textarea class="summernote" name="text"><?php echo $billet1->texte(); ?></textarea>
+                        <input type="submit" class="btn btn-primary btn_publication" value="Modifier">
                     </form>
                 </div>
             </div>

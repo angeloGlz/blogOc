@@ -12,14 +12,14 @@ Licence URI: http://www.os-templates.com/template-terms
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<link href="../public/styles/styles_front/layout.css" rel="stylesheet" type="text/css" media="all">
+<link href="public/styles/styles_front/layout.css" rel="stylesheet" type="text/css" media="all">
 </head>
 <body id="top">
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
 <!-- Top Background Image Wrapper -->
-<div class="bgded overlay" style="background-image:url('../public/images/alaska.jpg');"> 
+<div class="bgded overlay" style="background-image:url('public/images/alaska.jpg');"> 
   <!-- ################################################################################################ -->
   <div class="wrapper row1">
     <header id="header" class="hoc clear"> 
@@ -35,7 +35,7 @@ Licence URI: http://www.os-templates.com/template-terms
           </li>
           <li><a class="drop" href="#">Chapitres</a>
           </li>
-          <li><a class="drop" href="#">Espace Membre</a>
+          <li><a class="drop" href="index.php?action=pageConnexion">Admin</a>
           </li>
         </ul>
       </nav>
@@ -73,7 +73,7 @@ Licence URI: http://www.os-templates.com/template-terms
     </div>
     <ul class="d-flex">
       <li class="col-4">
-        <img src="../public/images/forteroche.jpg">
+        <img src="public/images/forteroche.jpg">
       </li>
       <li class="col-6">
         <p>
@@ -109,28 +109,28 @@ Licence URI: http://www.os-templates.com/template-terms
       <p>Retrouver les chapitres du dernier livre de Jean Forteroche et partagez votre reessentit !</p>
     </div>
     <div class="group element team btmspace-80">
-      <article class="one_quarter first"><img src="../public/images/chapitre1.jpg" alt="">
+      <article class="one_quarter first"><img src="public/images/chapitre1.jpg" alt="">
         <div class="txtwrap">
           <h6 class="heading">chapitre 1</h6>
           <em>Arrivée semé d'embuche</em>
           <footer><a href="#">lire ce chapitre</a></footer>
         </div>
       </article>
-      <article class="one_quarter"><img src="../public/images/chapitre2.jpg" alt="">
+      <article class="one_quarter"><img src="public/images/chapitre2.jpg" alt="">
         <div class="txtwrap">
           <h6 class="heading">chapitre 2</h6>
           <em>A couper le souffle</em>
           <footer><a href="#">lire ce chapitre</a></footer>
         </div>
       </article>
-      <article class="one_quarter"><img src="../public/images/chapitre3.jpg" alt="">
+      <article class="one_quarter"><img src="public/images/chapitre3.jpg" alt="">
         <div class="txtwrap">
           <h6 class="heading">chapitre 3</h6>
           <em>Une rencontre innatendu</em>
           <footer><a href="#">lire ce chapitre</a></footer>
         </div>
       </article>
-      <article class="one_quarter"><img src="../public/images/chapitre4.jpg" alt="">
+      <article class="one_quarter"><img src="public/images/chapitre4.jpg" alt="">
         <div class="txtwrap">
           <h6 class="heading">chapitre 4</h6>
           <em>L'île mysterieuse</em>
@@ -231,9 +231,9 @@ Licence URI: http://www.os-templates.com/template-terms
 <!-- ################################################################################################ -->
 <a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
 <!-- JAVASCRIPTS -->
-<script src="../public/js/scripts_front/jquery.min.js"></script>
-<script src="../public/js/scripts_front/jquery.backtotop.js"></script>
-<script src="../public/js/scripts_front/jquery.mobilemenu.js"></script>
+<script src="public/js/scripts_front/jquery.min.js"></script>
+<script src="public/js/scripts_front/jquery.backtotop.js"></script>
+<script src="public/js/scripts_front/jquery.mobilemenu.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </body>
