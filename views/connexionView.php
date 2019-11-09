@@ -26,10 +26,9 @@
     </div>
 
     <!-- Login Form -->
-    <form method="POST" action="index.php">
-      <input type="hidden" name="action" value="connexion">
+    <form method="POST" action="index.php?action=connexion">
       <input type="text" id="login" class="fadeIn second" name="pseudo" placeholder="login">
-      <input type="text" id="password" class="fadeIn third" name="password" placeholder="password">
+      <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
       <input type="submit" class="fadeIn fourth" value="Log In">
     </form>
 

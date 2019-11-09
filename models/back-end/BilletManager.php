@@ -44,8 +44,9 @@ class BilletManager extends Manager{
 		$req = $db->query("SELECT * FROM billets WHERE id = '".$id."'");
 
 		$donnees = $req->fetch(PDO::FETCH_ASSOC);
+		$billet = new Billet($donnees);
 
-		return $donnees;
+		return $billet;
 
 	}
 
@@ -64,11 +65,12 @@ class BilletManager extends Manager{
 
 		$db = $this->dbConnect();
 		
-		$req = $db->prepare("UPDATE billets SET titre = :titre, texte = :texte WHERE id = :id");
+		$req = $db->prepare("UPDATE billets SET titre = :titre, texte = :texte, image = :image WHERE id = :id");
 
 		$req->bindValue(':id', $billet->id());
 		$req->bindValue(':titre', $billet->titre());
 		$req->bindValue(':texte', $billet->texte());
+		$req->bindValue(':image', $billet->image());
 
 		$req->execute();
 	}

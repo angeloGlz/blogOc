@@ -1,6 +1,6 @@
 <?php
 	require('models/back-end/BilletManager.php');
-	require('models/back-end/class/Billet.php');
+	require('class/Billet.php');
 
 	function listBillets(){
 
@@ -30,13 +30,7 @@
 		}
 	}
 
-
-	// function publication($titre, $texte, $image){
-	// 	publication($titre, $texte, $image);
-	// }
-
 	function publication(Billet $billet){
-
 		if (!empty($billet->titre()) && !empty($billet->texte())) {
 
 			$billetManager = new BilletManager();
@@ -46,6 +40,12 @@
 			listBillets();
 		}
 		else{
+			if (!empty($billet->titre())) {
+				$_SESSION['titre'] = $billet->titre();
+			}
+			if (!empty($billet->texte())) {
+				$_SESSION['texte'] = $billet->texte();
+			}
 			publierBillet();
 		}
 	}
@@ -76,29 +76,48 @@
 			listBillets();
 		}
 		else{
-			$billet1 = new Billet($billet);
+			$billet1 = $billet;
 			require('views/back-end/editView.php');
 		}
 
 		
 	}
 
-	function updateBillet($idbillet, $title, $text){
+	function updateBillet($idbillet, $title, $text, $image, $newImage){
 
-		if (!empty($idbillet) && !empty($title) && !empty($text)) {
-			$billetManager = new BilletManager();
+		if (!empty($newImage['name'])) {
+
+			if (!empty($image)) {
+				unlink('public/images/'.$image);
+			}
 
 			$billet = new Billet([
 				'id' => $idbillet,
 				'titre' => $title,
-				'texte' => $text
+				'texte' => $text,
+				'image' => $newImage
 			]);
-			$billetManager->update($billet);
-			//require('views/editBillet.php');
+		}
+		else{
+			$billet = new Billet([
+				'id' => $idbillet,
+				'titre' => $title,
+				'texte' => $text,
+				'image' => $image
+			]);
+		}
+		
+		if (empty($_SESSION['error_billet'])) {
 			
+			$billetManager = new BilletManager();
+			$billetManager->update($billet);
 			listBillets();
 		}
-
+		else{
+			getBillet($billet->id());
+		}
+		
+		//require('views/editBillet.php');
 	}
 	
 

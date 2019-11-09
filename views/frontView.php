@@ -30,7 +30,7 @@ Licence URI: http://www.os-templates.com/template-terms
       <!-- ################################################################################################ -->
       <nav id="mainav" class="fl_right">
         <ul class="clear">
-          <li class="active"><a href="index.html">Accueil</a></li>
+          <li class="active"><a href="index.php">Accueil</a></li>
           <li><a class="drop" href="#">Biographie</a>
           </li>
           <li><a class="drop" href="#">Chapitres</a>
@@ -108,15 +108,19 @@ Licence URI: http://www.os-templates.com/template-terms
       <h6 class="heading">Chapitres</h6>
       <p>Retrouver les chapitres du dernier livre de Jean Forteroche et partagez votre reessentit !</p>
     </div>
-    <div class="group element team btmspace-80">
-      <article class="one_quarter first"><img src="public/images/chapitre1.jpg" alt="">
-        <div class="txtwrap">
-          <h6 class="heading">chapitre 1</h6>
-          <em>Arrivée semé d'embuche</em>
-          <footer><a href="#">lire ce chapitre</a></footer>
-        </div>
-      </article>
-      <article class="one_quarter"><img src="public/images/chapitre2.jpg" alt="">
+    <div class="group element team btmspace-80 bloc_chapitres">
+      <?php
+          foreach ($listBillets as $billet) { ?>
+            <article class="one_quarter first"><img src="public/images/<?php echo $billet->image(); ?>" alt="">
+              <div class="txtwrap">
+                <h6 class="heading"><?php echo $billet->titre(); ?></h6>
+                <footer><a href="index.php?action=afficherChapitre&chapitre=<?php echo $billet->id(); ?>">lire ce chapitre</a></footer>
+              </div>
+            </article>
+      <?php } ?>
+     
+      
+      <!-- <article class="one_quarter"><img src="public/images/chapitre2.jpg" alt="">
         <div class="txtwrap">
           <h6 class="heading">chapitre 2</h6>
           <em>A couper le souffle</em>
@@ -136,7 +140,7 @@ Licence URI: http://www.os-templates.com/template-terms
           <em>L'île mysterieuse</em>
           <footer><a href="#">lire ce chapitre</a></footer>
         </div>
-      </article>
+      </article> -->
     </div>
     <footer class="center"><a class="btn" href="#">Commander le livre papier</a></footer>
     <!-- ################################################################################################ -->

@@ -712,6 +712,16 @@ body {
   float: right;
 }
 
+.imgBilletEdit{
+  width: 20%;
+  margin-top: 10px;
+}
+
+.imgBilletEdit img{
+  width: 220px;
+  height: 143px;
+}
+
 .imgBillet img{
   width: 220px;
   height: 143px;

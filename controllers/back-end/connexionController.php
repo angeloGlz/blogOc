@@ -16,6 +16,8 @@ function connexion($pseudo, $mdp){
 		if ($idExist == 1) {
 			//$admin = new Admin($pseudo, $mdp_crypte);
 			$_SESSION['pseudo'] = $pseudo;
+			//require_once('views/billetsView.php');
+			listBillets();
 		}
 		else{
 			$_SESSION['error_co'] = "identifiant ou mot de passe incorrect";

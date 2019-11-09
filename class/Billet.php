@@ -54,8 +54,9 @@ class Billet {
 	}
 
 	public function setTitre($titre){
-		if (!empty($titre)) {
-			if (is_string($titre)) {
+		$titre_nohtml_noespace = str_replace(CHR(32),"", strip_tags($titre));
+		if (!empty($titre_nohtml_noespace)) {
+			if (is_string($titre_nohtml_noespace)) {
 				$this->_titre = $titre;
 			}
 			else{
@@ -68,8 +69,10 @@ class Billet {
 	}
 
 	public function setTexte($texte){
-		if (!empty($texte)) {
-			if (is_string($texte)) {
+		$texte_nohtml_espace = str_replace(CHR(32),"", strip_tags($texte));
+		$texte_no_nbsp = str_replace("&nbsp;", "", $texte_nohtml_espace);
+		if (!empty($texte_no_nbsp)) {
+			if (is_string($texte_no_nbsp)) {
 				$this->_texte = $texte;
 			}
 			else{
@@ -79,7 +82,6 @@ class Billet {
 		else{
 			$_SESSION['error_billet'] = "Le texte est obligatoire";
 		}
-		
 	}
 
 	// public function setImage($image){
@@ -94,12 +96,12 @@ class Billet {
 		elseif (is_array($image)) {
 			if ($image['error'] == 0) {
 				if (is_array($image)) {
-					$extensions = array('jpg','png','jpeg','pdf');
+					$extensions = array('jpg','png','jpeg');
 					$fileExt = explode('.', $image['name']);
 					$fileActualExt = strtolower(end($fileExt));
 					if (in_array($fileActualExt, $extensions)) {
 						if ($image['size'] <= 1000000) {
-							$newNameFile = sha1($image['name']).".".$fileActualExt;
+							$newNameFile = uniqid().".".$fileActualExt;
 							$fileDestination = 'public/images/'.$newNameFile;
 							move_uploaded_file($image['tmp_name'], $fileDestination);
 
@@ -121,7 +123,7 @@ class Billet {
 		
 	}
 
-
+    
 
 	public function __toString(){
 		return "To string par défaut : ".$this->_titre. "<br/>";

@@ -78,11 +78,28 @@
                         </div>
                     </div>
 
-                    <form method="POST" action="index.php" id="formSummerNote">
-                        <input type="hidden" name="action" value="saveEdit">
+                     <?php 
+                            if (!empty($_SESSION['error_billet'])) {
+                              echo "<div class='erreur'>". $_SESSION['error_billet'] ."</div>";
+                            }
+                             unset($_SESSION['error_billet']);
+                        ?>
+
+                    <form method="POST" action="index.php?action=saveEdit" id="formSummerNote" enctype="multipart/form-data">
+                        <!-- <input type="hidden" name="action" value="saveEdit"> -->
                         <input type="hidden" name="idbillet" value="<?php echo $billet1->id() ?>" >
                         <input class="inputTitle" type="text" name="title" placeholder="Titre..." value ="<?php echo $billet1->titre(); ?>">
                         <textarea class="summernote" name="text"><?php echo $billet1->texte(); ?></textarea>
+                        <input type="hidden" name="image" value="<?php echo $billet->image(); ?>" >
+                        <input type="file" name="newimage" class="inputFile">
+                        <div class="imgBilletEdit">
+                            <?php 
+                            if (!empty($billet->image())) {
+                              echo '<img src="public/images/'.$billet->image().'">';
+                            }  
+                            ?>
+                        </div>
+                        
                         <input type="submit" class="btn btn-primary btn_publication" value="Modifier">
                     </form>
                 </div>

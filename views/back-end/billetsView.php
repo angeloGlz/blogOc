@@ -84,18 +84,20 @@
 						
 						<div class="imgBillet">
 
-							<?php if (!empty($billet->image())) {
+							<?php 
+							if (!empty($billet->image())) {
 								echo '<img src="public/images/'.$billet->image().'">';
-							}  ?>
+							}  
+							?>
 						</div>
 						<div class="blocBtnBillet">
-							<form method="POST" action="index.php">
-								<input type="hidden" name="action" value="delete">
+							<form method="POST" action="index.php?action=delete">
+								<!-- <input type="hidden" name="action" value="delete"> -->
 								<input type="hidden" name="idbillet" value="<?php echo $billet->id(); ?>">
 								<input type="submit" class="submitDelete" value="supprimer">
 							</form>
-							<form method="POST" action="index.php">
-								<input type="hidden" name="action" value="edit">
+							<form method="POST" action="index.php?action=edit">
+								<!-- <input type="hidden" name="action" value="edit"> -->
 								<input type="hidden" name="idbillet" value="<?php echo $billet->id(); ?>">
 								<input type="submit" value="modifier">
 							</form>

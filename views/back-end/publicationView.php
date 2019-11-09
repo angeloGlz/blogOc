@@ -77,15 +77,21 @@
                         </div>
                     </div>
                     <?php 
-                            if (!empty($_SESSION['error_billet'])) {
-                              echo "<div class='erreur'>". $_SESSION['error_billet'] ."</div>";
-                              unset($_SESSION['error_billet']);
-                            }
-                        ?>
-                    <form method="POST" action="index.php" id="formSummerNote" enctype="multipart/form-data">
-                        <input type="hidden" name="action" value="checkBillet" />
-                        <input class="inputTitle" type="text" name="titre" placeholder="Entrer votre titre ...">
-                        <textarea class="summernote" name="texte" placeholder="Entrer votre texte ..."></textarea>
+                        if (!empty($_SESSION['error_billet'])) {
+                          echo "<div class='erreur'>". $_SESSION['error_billet'] ."</div>";
+                        }
+                        unset($_SESSION['error_billet']);
+                    ?>
+                    <form method="POST" action="index.php?action=checkBillet" id="formSummerNote" enctype="multipart/form-data">
+                       <!--  <input type="hidden" name="action" value="checkBillet" /> -->
+                        <input class="inputTitle" type="text" name="titre" placeholder="Entrer votre titre ..." <?php if (!empty($_SESSION['titre'])) {
+                          echo 'value='.$_SESSION['titre'];
+                          unset($_SESSION['titre']);
+                        } ?> >
+                        <textarea class="summernote" name="texte" placeholder="Entrer votre texte ..."><?php if (!empty($_SESSION['texte'])) {
+                          echo $_SESSION['texte'];
+                          unset($_SESSION['texte']);
+                        } ?> </textarea>
                         <input type="file" name="image" class="inputFile">
                         <input type="submit" name="publier" class="btn btn-primary btn_publication" value="Publier">
                     </form>
