@@ -44,6 +44,7 @@ class BilletManager extends Manager{
 		$req = $db->query("SELECT * FROM billets WHERE id = '".$id."'");
 
 		$donnees = $req->fetch(PDO::FETCH_ASSOC);
+
 		$billet = new Billet($donnees);
 
 		return $billet;

@@ -3,6 +3,7 @@
 
 require('controllers/back-end/billetsController.php');
 require('controllers/back-end/connexionController.php');
+require('controllers/back-end/commentairesControllerBack.php');
 require('controllers/frontController.php');
 
 
@@ -29,6 +30,10 @@ if (isset($_GET['action']) || isset($_POST['action'])) {
 			listBillets();
 		}
 
+		elseif ($action == 'listCommentaires') {
+			getListCom();
+		}
+
 		elseif ($action == 'publierBillet') {
 			publierBillet();
 		}
@@ -50,11 +55,26 @@ if (isset($_GET['action']) || isset($_POST['action'])) {
 		}
 
 		elseif ($action == 'afficherChapitre') {
-			afficherChapitre($_GET['chapitre']);
+			checkChapitreExist($_GET['chapitre']);
 		}
 
-		elseif ($action == 'publierCom') {
-			ajouterCom($_POST['pseudo'], $_POST['commentaire'], $_POST['idBillet']);
+		elseif ($action == 'signalerCommentaire') {
+			signalerCommentaire($_GET['commentaire']);
+		}
+
+		elseif ($action == 'checkComExist') {
+			checkComExist($_POST['pseudo'], $_POST['commentaire'], $_POST['idBillet']);
+		}
+
+		elseif ($action == 'designalerCommentaire') {
+			designalerCom($_POST['idCom']);
+		}
+
+		elseif ($action == 'supprimerCommentaire') {
+			//var_dump($_POST['idCom']);
+			if (!empty($_POST['idCom'])) {
+				supprimerCom($_POST['idCom']);
+			}
 		}
 
 		else{
@@ -71,15 +91,37 @@ if (isset($_GET['action']) || isset($_POST['action'])) {
 		} 
 
 		elseif ($action == 'afficherChapitre') {
-			afficherChapitre($_GET['chapitre']);
+			if (!empty($_GET['chapitre'])) {
+				checkChapitreExist($_GET['chapitre']);
+			}
+			else{
+				listBilletsFront();
+			}
+			
 		}
 
 		elseif ($action == 'listBilletsFront') {
 			listBilletsFront();
 		}
 
-		elseif ($action == 'publierCom') {
-			ajouterCom($_POST['pseudo'], $_POST['commentaire'], $_POST['idBillet']);
+		elseif ($action == 'checkComExist') {
+			if (!empty($_POST['idBillet']) && !empty($_POST['pseudo']) && !empty($_POST['commentaire'])) {
+				checkComExist($_POST['idBillet'], $_POST['pseudo'], $_POST['commentaire']);
+			}
+			else{
+				//var_dump($_POST['idBillet'], $_POST['pseuod'], $_POST['commentaire']);
+				listBilletsFront();
+			}
+			
+		}
+
+		elseif ($action == 'signalerCommentaire') {
+			if (!empty($_GET['commentaire'] && !empty($_GET['billet']))) {
+				signalerCommentaire($_GET['commentaire'], $_GET['billet']);
+			}
+			else{
+				listBilletsFront();
+			}
 		}
 
 		else{

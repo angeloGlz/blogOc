@@ -122,6 +122,7 @@ address, article, aside, figcaption, figure, footer, header, main, nav, section{
 	display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+
 }
 
 .blocForm label{
@@ -141,6 +142,49 @@ address, article, aside, figcaption, figure, footer, header, main, nav, section{
 .pseudo_date{
 	display: flex;
     justify-content: space-between;
+	padding: 10px;
 }
+
+.pseudo_date button{
+	padding: 0;
+}
+
+.pseudo_date a{
+	display: block;
+    padding-left: 4px;
+    padding-right: 4px;
+    color: red;
+}
+
+.com{
+	background-color: white;
+    margin-bottom: 20px;
+    border: 1px solid #808080;
+	box-shadow: inset 0 0 4px #000000;
+}
+
+.com_signaler{
+	background-color: white;
+    margin-bottom: 20px;
+    border: 1px solid #808080;
+	box-shadow: inset 0 0 4px #000000;
+	opacity: 0.5;
+}
+
+
+.texteCom{
+	padding-left: 10px;
+	padding-bottom: 10px;
+	padding-right: 10px;
+}
+
+
+
+
+
+
+
+
+
 
 

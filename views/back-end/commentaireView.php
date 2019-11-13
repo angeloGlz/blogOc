@@ -64,48 +64,52 @@
                 </ul>
              </div>
 		   </div>
-		<h2 class="titleH2">Billets</h2>   
-		<div class="listBillets">   
+		<h2 class="titleH2">Commentaires</h2>   
+		<div class="bloc_com">   
+			<h4>commentaire(s) signalé(s)</h4>
 			<?php 
-				foreach($listBillets as $billet){ ?>
-					<div class="billet">
-						<div class="texteBillet">
-							<h3 class="titreBillet"> <?php echo $billet->titre(); ?> </h3>
-						<?php
-							$billetWhithHTML = $billet->texte();
-							$billetTextNoHTML = strlen(strip_tags($billet->texte()));
-							if ($billetTextNoHTML <= 700) {
-								echo("<p>". $billetWhithHTML ."</p>");
-							} 
-							else{
-								echo substr($billetWhithHTML, 0, 700) ?> <a href="#">afficher la suite ...</a></br> <?php 
-							}
-						?>
+				foreach ($listCom as $com) { 
+					if($com->getSignaler() == 1){ ?>
+						<div class="com_signaler">
+							<div class="pseudo_date">
+				              <p class="pseudo_com">Posté par : <strong><?php echo $com->getPseudo(); ?></strong> le <?php echo $com->getDate(); ?></p>
+				              <div class="bloc_btn">
+				              	<form method="post" action="index.php?action=designalerCommentaire" class="bloc_btn">
+				              		<input type="hidden" name="idCom" value="<?php echo $com->getId(); ?>">
+				              		<input type="submit" name="btnDesignaler" value="désignaler">
+				              	</form>
+				              	<form method="post" action="index.php?action=supprimerCommentaire" class="bloc_btn">
+				              		<input type="hidden" name="idCom" value="<?php echo $com->getId(); ?>">
+				              		<input type="submit" name="btnSupprimer" value="supprimer">
+				              	</form>
+				              </div>
+				            </div>
+				            <p class="texte_com"><?php echo $com->getCommentaire(); ?></p>
 						</div>
-						
-						<div class="imgBillet">
-
-							<?php 
-							if (!empty($billet->image())) {
-								echo '<img src="public/images/'.$billet->image().'">';
-							}  
-							?>
-						</div>
-						<div class="blocBtnBillet">
-							<form method="POST" action="index.php?action=delete">
-								<!-- <input type="hidden" name="action" value="delete"> -->
-								<input type="hidden" name="idbillet" value="<?php echo $billet->id(); ?>">
-								<input type="submit" class="submitDelete" value="supprimer">
-							</form>
-							<form method="POST" action="index.php?action=edit">
-								<!-- <input type="hidden" name="action" value="edit"> -->
-								<input type="hidden" name="idbillet" value="<?php echo $billet->id(); ?>">
-								<input type="submit" value="modifier">
-							</form>
-						</div>
-					</div></br>
-			<?php } ?>
+			<?php  } 
+				}?>
 		</div>
+
+		<div class="bloc_com">   
+			<h4>commentaire(s) non signalé(s)</h4>
+			<?php 
+				foreach ($listCom as $com) { 
+					if($com->getSignaler() == 0){ ?>
+
+					<div class="com">
+						<div class="pseudo_date">
+			              <p class="pseudo_com">Posté par : <strong><?php echo $com->getPseudo(); ?></strong> le <?php echo $com->getDate(); ?></p>
+			              <form method="post" action="index.php?action=supprimerCommentaire">
+			              	<input type="hidden" name="idCom" value="<?php echo $com->getId(); ?>">
+			              	<input type="submit" name="supprimerCom" value="supprimer">
+			              </form>
+			            </div>
+			            <p class="texte_com"><?php echo $com->getCommentaire(); ?></p>
+					</div>
+			<?php  } 
+				}?>
+		</div>
+
 		</div>   
     </div>
 

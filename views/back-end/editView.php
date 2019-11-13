@@ -26,7 +26,7 @@
                <div class="col-md-5">
                   <!-- Logo -->
                   <div class="logo">
-                     <h1><a href="afficherBillets.php">Back Office</a></h1>
+                     <h1><a href="index.php?action=listBillets">Back Office</a></h1>
                   </div>
                </div>
                <div class="col-md-5">
@@ -61,8 +61,9 @@
                 <ul class="nav">
                     <!-- Main menu -->
                     <li class="current"><a href="index.php?action=listBillets"><i class="glyphicon glyphicon-home"></i> billets</a></li>
-                    <li><a href="index.php?action=listBillets"><i class="glyphicon glyphicon-envelope"></i> Commentaires</a></li>
+                    <li><a href="index.php?action=listCommentaires"><i class="glyphicon glyphicon-envelope"></i> Commentaires</a></li>
                     <li><a href="index.php?action=publierBillet"><i class="glyphicon glyphicon-pencil"></i> Publier</a></li>
+                    <li><a href="index.php"><i class="glyphicon glyphicon-pencil"></i> Revenir sur le site</a></li>
                 </ul>
              </div>
            </div>

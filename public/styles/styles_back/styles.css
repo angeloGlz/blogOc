@@ -1010,8 +1010,59 @@ input[type=text]:placeholder {
   padding-left: 31px;
 }
 
+.bloc_com{
+  width: 78%;
+  float: right;
+  margin-right: 3%;
+}
+
+.bloc_btn{
+  width: 14%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.bloc_com button{
+  padding: 0;
+  height: 28px;
+}
+
+.pseudo_date{
+  display: flex;
+    justify-content: space-between;
+  padding: 10px;
+  font-size: 13px;
+}
 
 
 
+.pseudo_date a{
+  display: block;
+    padding-left: 4px;
+    padding-right: 4px;
+    color: red;
+    text-decoration: none;
+}
+
+.com{
+  background-color: white;
+    margin-bottom: 20px;
+    border: 1px solid #808080;
+}
+
+.com_signaler{
+  background-color: white;
+    margin-bottom: 20px;
+    border: 1px solid #808080;
+  border-color: red;
+}
+
+
+.texte_com{
+  padding-left: 10px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+  font-size: 13px;
+}
 
 

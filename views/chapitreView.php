@@ -56,22 +56,25 @@ Licence URI: http://www.os-templates.com/template-terms
 
     <div class="bloc_com">
       <?php
+      if (!empty($comChapitre)) {
         foreach ($comChapitre as $com) { ?>
-          <div class="com">
+          <div <?php if($com->getSignaler() == 1){ echo "class=com_signaler";} else{echo "class=com";} ?>>
             <div class="pseudo_date">
-              <p class="pseudo">pseudo : <?php echo $com->getPseudo(); ?></p>
-              <p class="date">posté le : <?php echo $com->getDate(); ?></p>
-              <button><a href="#">signaler</a></button>
+              <p class="pseudo">Posté par : <strong><?php echo $com->getPseudo(); ?></strong> le <?php echo $com->getDate(); ?></p>
+              <button><a href="index?action=signalerCommentaire&commentaire=<?php echo $com->getId()?>&billet=<?php echo $billet1->id(); ?>">signaler</a></button>
             </div>
-            <p class="texteCom">commentaire : <?php echo $com->getCommentaire(); ?></p>
+            <p class="texteCom"><?php echo $com->getCommentaire(); ?></p>
           </div>
-      <?php  } ?>
+      <?php  
+        }
+      }
+      ?>
       
     </div>
 
     <h3>Commentaires</h3>
     <div class="blocForm">
-        <form method="POST" action="index.php?action=publierCom">
+        <form method="POST" action="index.php?action=checkComExist">
             <label>Pseudo
                 <input type="text" name="pseudo" class="inputFront" required="true">
             </label>

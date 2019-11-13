@@ -27,7 +27,6 @@ function afficherChapitre($idbillet){
 		if ($listeComChapitre == NULL) {
 			require('views/chapitreView.php');
 		}
-		//var_dump($commentaireManager->getComChapitre($idbillet));
 		else{
 			$comChapitre = $listeComChapitre;
 			require('views/chapitreView.php');
@@ -37,38 +36,63 @@ function afficherChapitre($idbillet){
 
 }
 
+function checkChapitreExist($idbillet){
+	$commentaireManager = new CommentaireManager();
+	if(!empty($commentaireManager->checkIdBillet($idbillet))){
+		afficherChapitre($idbillet);
+	}
+	else{
+		listBilletsFront();
+	}
+}
+
 function getComChapitre($idbillet){
-	
-	
+	$commentaireManager = new CommentaireManager();
 	if ($commentaireManager->getComChapitre($idbillet) != NULL) {
 		$listComChapitre = $commentaireManager->getComChapitre($idbillet);
 	}
 }
 
+function checkComExist($idbillet, $pseudo, $commentaire){
+	$commentaireManager = new CommentaireManager();
+	var_dump($commentaireManager->checkComExist($idbillet, $pseudo, $commentaire));
+	if ($commentaireManager->checkComExist($idbillet, $pseudo, $commentaire) == 0) {
+		ajouterCom($pseudo, $commentaire, $idbillet);
+	}
+	else{
+		afficherChapitre($idbillet);
+	}
+}
 
 function ajouterCom($pseudo, $texte, $idbillet){
 	$commentaireManager = new CommentaireManager();
-	//var_dump((int)$idbillet);
+
 	$commentaire = new Commentaire([
 		'idbillet' => $idbillet,
 		'pseudo' => $pseudo,
 		'commentaire' => $texte
 	]);
-	// var_dump($idbillet);
-	// var_dump($commentaire->idbillet());
+
 	if (empty($_SESSION['erreur_commentaire'])) {
 		$commentaireManager->addCom($commentaire);
-		afficherChapitre($idbillet);
+		var_dump($commentaire);
+		afficherChapitre($commentaire->getIdBillet());
 	}
 	else{
-		//require('index.php?action=afficherChapitre&chapitre='.$idbillet);
 		afficherChapitre($idbillet);
 	}
+
 }
 
 
 
+function signalerCommentaire($idCom, $idBillet){
+	$commentaireManager = new CommentaireManager();
 
+	$commentaireManager->signaler($idCom);
+
+	checkChapitreExist($idBillet);
+}
 
 
 

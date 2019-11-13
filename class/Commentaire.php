@@ -68,17 +68,14 @@ Class Commentaire{
 	}
 
 	public function setPseudo($pseudo){
-		if (is_string($pseudo)) {
+
 			if (strlen($pseudo) <= 30) {
 				$this->_pseudo = $pseudo;
 			}
 			else{
 				$_SESSION['erreur_commentaire'] = "Le pseudo ne doit pas contenir plus de 30 caractères";
 			}
-		}
-		else{
-			$_SESSION['erreur_commentaire'] = "Une erreur est survenue";
-		}
+
 	}
 
 	public function setCommentaire($commentaire){
