@@ -73,6 +73,7 @@
 		
 
 		if ($billet == null || $billet == false) {
+			var_dump($billet);
 			listBillets();
 		}
 		else{

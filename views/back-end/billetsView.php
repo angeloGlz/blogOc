@@ -57,9 +57,9 @@
 		  	<div class="sidebar content-box" style="display: block;">
                 <ul class="nav">
                     <!-- Main menu -->
-                    <li class="current"><a href="index.php?action=listBillets"><i class="glyphicon glyphicon-home"></i> billets</a></li>
-                    <li><a href="index.php?action=listCommentaires"><i class="glyphicon glyphicon-envelope"></i> Commentaires</a></li>
-                    <li><a href="index.php?action=publierBillet"><i class="glyphicon glyphicon-pencil"></i> Publier</a></li>
+                    <li class="current"><a href="index.php?action=page_liste_billets"><i class="glyphicon glyphicon-home"></i> billets</a></li>
+                    <li><a href="index.php?action=page_liste_commentaires"><i class="glyphicon glyphicon-envelope"></i> Commentaires</a></li>
+                    <li><a href="index.php?action=page_publier_billet"><i class="glyphicon glyphicon-pencil"></i> Publier</a></li>
                     <li><a href="index.php"><i class="glyphicon glyphicon-pencil"></i> Revenir sur le site</a></li>
                 </ul>
              </div>
@@ -92,12 +92,12 @@
 							?>
 						</div>
 						<div class="blocBtnBillet">
-							<form method="POST" action="index.php?action=delete">
+							<form method="POST" action="index.php?action=supprimer_billet">
 								<!-- <input type="hidden" name="action" value="delete"> -->
 								<input type="hidden" name="idbillet" value="<?php echo $billet->id(); ?>">
 								<input type="submit" class="submitDelete" value="supprimer">
 							</form>
-							<form method="POST" action="index.php?action=edit">
+							<form method="POST" action="index.php?action=editer_billet">
 								<!-- <input type="hidden" name="action" value="edit"> -->
 								<input type="hidden" name="idbillet" value="<?php echo $billet->id(); ?>">
 								<input type="submit" value="modifier">

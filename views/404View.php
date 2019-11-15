@@ -47,44 +47,11 @@ Licence URI: http://www.os-templates.com/template-terms
 <div class="wrapper row3 bloc_chapitres">
   <section class="hoc container clear"> 
     <!-- ################################################################################################ -->
-    <div class="sectiontitle center">
-      <img src="public/images/<?php echo $billet->image(); ?>">
-      <h3 class="heading"><?php echo $billet1->titre(); ?></h3>
-      <p> <?php echo $billet1->texte(); ?></p>
+    <div class="bloc_erreur_404">
+      <h2>ERREUR 404</h2>
+      <p>Désolé, cette page n'éxiste pas...</p>
     </div>
     <!-- ################################################################################################ -->
-
-    <div class="bloc_com">
-      <?php
-      if (!empty($comChapitre)) {
-        foreach ($comChapitre as $com) { ?>
-          <div <?php if($com->getSignaler() == 1){ echo "class=com_signaler";} else{echo "class=com";} ?>>
-            <div class="pseudo_date">
-              <p class="pseudo">Posté par : <strong><?php echo $com->getPseudo(); ?></strong> le <?php echo $com->getDate(); ?></p>
-              <button><a href="index?action=signalerCommentaire&commentaire=<?php echo $com->getId()?>&billet=<?php echo $billet1->id(); ?>">signaler</a></button>
-            </div>
-            <p class="texteCom"><?php echo $com->getCommentaire(); ?></p>
-          </div>
-      <?php  
-        }
-      }
-      ?>
-      
-    </div>
-
-    <h3>Commentaires</h3>
-    <div class="blocForm">
-        <form method="POST" action="index.php?action=checkComExist">
-            <label>Pseudo
-                <input type="text" name="pseudo" class="inputFront" required="true">
-            </label>
-            <label>Commentaire
-                <textarea name="commentaire" class="inputFront textareaFront" required="true"></textarea> 
-            </label> 
-            <input type="hidden" name="idBillet" value="<?php echo $billet1->id(); ?>">
-            <input type="submit" name="btnPublierCom" value="Publier">
-        </form>
-    </div>
   </section>
 </div>
 <!-- ################################################################################################ -->

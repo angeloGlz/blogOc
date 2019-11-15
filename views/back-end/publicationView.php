@@ -60,9 +60,9 @@
             <div class="sidebar content-box" style="display: block;">
                 <ul class="nav">
                     <!-- Main menu -->
-                    <li class="current"><a href="index.php?action=listBillets"><i class="glyphicon glyphicon-home"></i> billets</a></li>
-                    <li><a href="index.php?action=listCommentaires"><i class="glyphicon glyphicon-envelope"></i> Commentaires</a></li>
-                    <li><a href="index.php?action=publierBillet"><i class="glyphicon glyphicon-pencil"></i> Publier</a></li>
+                    <li class="current"><a href="index.php?action=page_liste_billets"><i class="glyphicon glyphicon-home"></i> billets</a></li>
+                    <li><a href="index.php?action=page_liste_commentaires"><i class="glyphicon glyphicon-envelope"></i> Commentaires</a></li>
+                    <li><a href="index.php?action=page_publier_billet"><i class="glyphicon glyphicon-pencil"></i> Publier</a></li>
                     <li><a href="index.php"><i class="glyphicon glyphicon-pencil"></i> Revenir sur le site</a></li>
                 </ul>
              </div>
@@ -83,7 +83,7 @@
                         }
                         unset($_SESSION['error_billet']);
                     ?>
-                    <form method="POST" action="index.php?action=checkBillet" id="formSummerNote" enctype="multipart/form-data">
+                    <form method="POST" action="index.php?action=verification_billet" id="formSummerNote" enctype="multipart/form-data">
                        <!--  <input type="hidden" name="action" value="checkBillet" /> -->
                         <input class="inputTitle" type="text" name="titre" placeholder="Entrer votre titre ..." <?php if (!empty($_SESSION['titre'])) {
                           echo 'value='.$_SESSION['titre'];

@@ -1,0 +1,7 @@
+RewriteEngine Off
+
+RewriteRule ^accueil$ index.php
+RewriteRule ^chapitre/([0-9]+)$ index.php?action=afficherChapitre&chapitre=$1 
+RewriteRule ^connexion$ index.php?action=page_connexion
+RewriteRule ^connexion$ index.php?action=connexion
+RewriteRule ^billets$ views/back-end/billetsView.php

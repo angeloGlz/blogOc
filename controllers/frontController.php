@@ -6,6 +6,7 @@ require('models/CommentaireManager.php');
 function listBilletsFront(){
 
 	$billetsManager = new BilletManager();
+
 	$listBillets = $billetsManager->getBillets();
 
 	require('views/frontView.php');
@@ -13,6 +14,7 @@ function listBilletsFront(){
 
 function afficherChapitre($idbillet){
 	$billetsManager = new BilletManager();
+
 	$billet = $billetsManager->getOneBillet($idbillet);
 
 	if ($billet == null || $billet == false) {
@@ -38,16 +40,18 @@ function afficherChapitre($idbillet){
 
 function checkChapitreExist($idbillet){
 	$commentaireManager = new CommentaireManager();
+
 	if(!empty($commentaireManager->checkIdBillet($idbillet))){
 		afficherChapitre($idbillet);
 	}
 	else{
-		listBilletsFront();
+		require('views/404View.php');
 	}
 }
 
 function getComChapitre($idbillet){
 	$commentaireManager = new CommentaireManager();
+
 	if ($commentaireManager->getComChapitre($idbillet) != NULL) {
 		$listComChapitre = $commentaireManager->getComChapitre($idbillet);
 	}
@@ -55,7 +59,7 @@ function getComChapitre($idbillet){
 
 function checkComExist($idbillet, $pseudo, $commentaire){
 	$commentaireManager = new CommentaireManager();
-	var_dump($commentaireManager->checkComExist($idbillet, $pseudo, $commentaire));
+
 	if ($commentaireManager->checkComExist($idbillet, $pseudo, $commentaire) == 0) {
 		ajouterCom($pseudo, $commentaire, $idbillet);
 	}
@@ -75,10 +79,11 @@ function ajouterCom($pseudo, $texte, $idbillet){
 
 	if (empty($_SESSION['erreur_commentaire'])) {
 		$commentaireManager->addCom($commentaire);
-		var_dump($commentaire);
+
 		afficherChapitre($commentaire->getIdBillet());
 	}
 	else{
+
 		afficherChapitre($idbillet);
 	}
 
@@ -88,7 +93,7 @@ function ajouterCom($pseudo, $texte, $idbillet){
 
 function signalerCommentaire($idCom, $idBillet){
 	$commentaireManager = new CommentaireManager();
-
+	
 	$commentaireManager->signaler($idCom);
 
 	checkChapitreExist($idBillet);

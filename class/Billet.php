@@ -38,7 +38,6 @@ class Billet {
 	}
 
 	public function image(){
-		//var_dump($this->_image);
 		return $this->_image;
 	}
 
@@ -84,9 +83,6 @@ class Billet {
 		}
 	}
 
-	// public function setImage($image){
-
-	// }
 
 
 	public function setImage($image){

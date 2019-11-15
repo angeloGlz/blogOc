@@ -35,7 +35,7 @@ Licence URI: http://www.os-templates.com/template-terms
           </li>
           <li><a class="drop" href="#">Chapitres</a>
           </li>
-          <li><a class="drop" href="index.php?action=pageConnexion">Admin</a>
+          <li><a class="drop" href="index.php?action=page_connexion">Admin</a>
           </li>
         </ul>
       </nav>
@@ -109,6 +109,7 @@ Licence URI: http://www.os-templates.com/template-terms
       <p>Retrouver les chapitres du dernier livre de Jean Forteroche et partagez votre reessentit !</p>
     </div>
     <div class="group element team btmspace-80 bloc_chapitres">
+
       <?php
           foreach ($listBillets as $billet) { ?>
             <article class="one_quarter first"><img src="public/images/<?php echo $billet->image(); ?>" alt="">
@@ -118,29 +119,7 @@ Licence URI: http://www.os-templates.com/template-terms
               </div>
             </article>
       <?php } ?>
-     
-      
-      <!-- <article class="one_quarter"><img src="public/images/chapitre2.jpg" alt="">
-        <div class="txtwrap">
-          <h6 class="heading">chapitre 2</h6>
-          <em>A couper le souffle</em>
-          <footer><a href="#">lire ce chapitre</a></footer>
-        </div>
-      </article>
-      <article class="one_quarter"><img src="public/images/chapitre3.jpg" alt="">
-        <div class="txtwrap">
-          <h6 class="heading">chapitre 3</h6>
-          <em>Une rencontre innatendu</em>
-          <footer><a href="#">lire ce chapitre</a></footer>
-        </div>
-      </article>
-      <article class="one_quarter"><img src="public/images/chapitre4.jpg" alt="">
-        <div class="txtwrap">
-          <h6 class="heading">chapitre 4</h6>
-          <em>L'île mysterieuse</em>
-          <footer><a href="#">lire ce chapitre</a></footer>
-        </div>
-      </article> -->
+
     </div>
     <footer class="center"><a class="btn" href="#">Commander le livre papier</a></footer>
     <!-- ################################################################################################ -->
@@ -149,84 +128,13 @@ Licence URI: http://www.os-templates.com/template-terms
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
-<div class="wrapper row4 bgded overlay" style="background-image:url('accueil/images/demo/backgrounds/04.png');">
-  <footer id="footer" class="hoc clear"> 
-    <!-- ################################################################################################ -->
-    <div class="sectiontitle">
-      <h3 class="heading">Preevent</h3>
-      <ul class="nospace inline pushright uppercase">
-        <li><a href="index.html"><i class="fa fa-lg fa-home"></i></a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="#">Terms</a></li>
-        <li><a href="#">Privacy</a></li>
-        <li><a href="#">Cookies</a></li>
-        <li><a href="#">Disclaimer</a></li>
-        <li><a href="#">Online Shop</a></li>
-        <li><a href="#">Sitemap</a></li>
-      </ul>
-      <hr>
-    </div>
-    <!-- ################################################################################################ -->
-    <div class="one_quarter first">
-      <h6 class="heading">Dictum aliquam</h6>
-      <p>At feugiat nunc donec a est et metus aliquam tristique aenean eu elit vitae lectus mollis justo donec luctus vehicula lacus non.</p>
-      <p>Pharetra tortor laoreet eget ut congue erat at neque dignissim suscipit pretium sem rhoncus aliquam tincidunt.</p>
-    </div>
-    <div class="one_quarter">
-      <h6 class="heading">Lacinia elementum</h6>
-      <ul class="nospace linklist contact">
-        <li><i class="fa fa-map-marker"></i>
-          <address>
-          Street Name &amp; Number, Town, Postcode/Zip
-          </address>
-        </li>
-        <li><i class="fa fa-phone"></i> +00 (123) 456 7890<br>
-          +00 (123) 456 7890</li>
-        <li><i class="fa fa-fax"></i> +00 (123) 456 7890</li>
-        <li><i class="fa fa-envelope-o"></i> info@domain.com</li>
-      </ul>
-    </div>
-    <div class="one_quarter">
-      <h6 class="heading">Vel diam tempor</h6>
-      <ul class="nospace linklist">
-        <li><a href="#">Sed lacus turpis sed nisi</a></li>
-        <li><a href="#">Consequat sodales mauris</a></li>
-        <li><a href="#">Massa aliquam quis tortor</a></li>
-        <li><a href="#">Bibendum arcu in tristique</a></li>
-        <li><a href="#">Interdum eget sapien nec</a></li>
-      </ul>
-    </div>
-    <div class="one_quarter">
-      <h6 class="heading">Vulputate nulla</h6>
-      <ul class="nospace linklist">
-        <li>
-          <article>
-            <h6 class="nospace font-x1"><a href="#">Vehicula augue</a></h6>
-            <time class="font-xs block btmspace-10" datetime="2045-04-06">Friday, 6<sup>th</sup> April 2045</time>
-            <p class="nospace">Arcu ut condimentum in erat tincidunt quis accumsan [&hellip;]</p>
-          </article>
-        </li>
-        <li>
-          <article>
-            <h6 class="nospace font-x1"><a href="#">Condimentum aliquet</a></h6>
-            <time class="font-xs block btmspace-10" datetime="2045-04-05">Thursday, 5<sup>th</sup> April 2045</time>
-            <p class="nospace">Ultricies quis suscipit praesent euismod imperdiet ornare [&hellip;]</p>
-          </article>
-        </li>
-      </ul>
-    </div>
-    <!-- ################################################################################################ -->
-  </footer>
-</div>
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
 <div class="wrapper row5">
   <div id="copyright" class="hoc clear"> 
     <!-- ################################################################################################ -->
-    <p class="fl_left">Copyright &copy; 2016 - All Rights Reserved - <a href="#">Domain Name</a></p>
-    <p class="fl_right">Template by <a target="_blank" href="http://www.os-templates.com/" title="Free Website Templates">OS Templates</a></p>
+    <p class="fl_left">Copyright &copy; 2016 - All Rights Reserved - Formation OpenClassrooms - FDJ projet 4: créer un blog pour un écrivain</p>
     <!-- ################################################################################################ -->
   </div>
 </div>

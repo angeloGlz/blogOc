@@ -22,58 +22,98 @@ if (isset($_GET['action']) || isset($_POST['action'])) {
 			listBillets();
 		}
 
-		elseif ($action == 'pageConnexion') {
+		elseif ($action == 'page_connexion') {
 			listBillets();
 		} 
 
-		elseif ($action == 'listBillets') {
+		elseif ($action == 'page_liste_billets') {
 			listBillets();
 		}
 
-		elseif ($action == 'listCommentaires') {
+		elseif ($action == 'page_liste_commentaires') {
 			getListCom();
 		}
 
-		elseif ($action == 'publierBillet') {
+		elseif ($action == 'page_publier_billet') {
 			publierBillet();
 		}
 
-		elseif ($action == 'checkBillet') {
-			checkBillet($_POST['titre'], $_POST['texte'], $_FILES['image']);
+		elseif ($action == 'verification_billet') {
+			if (!empty($_POST['titre']) && !empty($_POST['texte']) && !empty($_FILES['image'])) {
+				checkBillet($_POST['titre'], $_POST['texte'], $_FILES['image']);
+			}	
+			else{
+				listBillets();
+			}
 		}
 
-		elseif ($action == 'delete') {
-			deleteBillet(intval($_POST['idbillet']));
+		elseif ($action == 'supprimer_billet') {
+			if (!empty($_POST['idbillet'])) {
+				deleteBillet(intval($_POST['idbillet']));
+			}
+			else{
+				listBillets();
+			}
+			
 		}
 
-		elseif ($action == 'edit'){
-			getBillet(intval($_POST['idbillet']));
+		elseif ($action == 'editer_billet'){
+			if (!empty($_POST['idbillet'])) {
+				getBillet(intval($_POST['idbillet']));
+			}
+			else{
+				listBillets();
+			}
+			
 		}
 
-		elseif ($action == 'saveEdit'){
+		elseif ($action == 'sauvegarder_edition_billet'){
 			updateBillet(intval($_POST['idbillet']), ($_POST['title']), ($_POST['text']), ($_POST['image']), ($_FILES['newimage']));
 		}
 
 		elseif ($action == 'afficherChapitre') {
-			checkChapitreExist($_GET['chapitre']);
+			if (!empty($_GET['chapitre'])) {
+				checkChapitreExist($_GET['chapitre']);
+			}
+			else{
+				listBilletsFront();
+			}
 		}
 
 		elseif ($action == 'signalerCommentaire') {
-			signalerCommentaire($_GET['commentaire']);
+			if (!empty($_GET['commentaire']) && !empty($_GET['billet'])) {
+				signalerCommentaire($_GET['commentaire'], $_GET['billet']);
+			}
+			else{
+				listBilletsFront();
+			}
 		}
 
 		elseif ($action == 'checkComExist') {
-			checkComExist($_POST['pseudo'], $_POST['commentaire'], $_POST['idBillet']);
+			if (!empty($_POST['idBillet']) && !empty($_POST['pseudo']) && !empty($_POST['commentaire'])) {
+				checkComExist($_POST['idBillet'], $_POST['pseudo'], $_POST['commentaire']);
+			}
+			else{
+				listBilletsFront();
+			}
+			
 		}
 
 		elseif ($action == 'designalerCommentaire') {
-			designalerCom($_POST['idCom']);
+			if (!empty($_POST['idCom'])) {
+				designalerCom($_POST['idCom']);
+			}
+			else{
+				listBilletsFront();
+			}
 		}
 
 		elseif ($action == 'supprimerCommentaire') {
-			//var_dump($_POST['idCom']);
 			if (!empty($_POST['idCom'])) {
 				supprimerCom($_POST['idCom']);
+			}
+			else{
+				listBillets();
 			}
 		}
 
@@ -83,10 +123,16 @@ if (isset($_GET['action']) || isset($_POST['action'])) {
 	}
 	else{
 		if($action == 'connexion'){
-			connexion($_POST['pseudo'], $_POST['password']);
+			if (!empty($_POST['pseudo']) && !empty($_POST['password'])) {
+				connexion($_POST['pseudo'], $_POST['password']);
+			}
+			else{
+				$_SESSION['error_co'] = "Un champ n'a pas été rempli";
+				require('views/connexionView.php');
+			}
 		} 
 
-		elseif ($action == 'pageConnexion') {
+		elseif ($action == 'page_connexion') {
 			require('views/connexionView.php');
 		} 
 
@@ -109,14 +155,13 @@ if (isset($_GET['action']) || isset($_POST['action'])) {
 				checkComExist($_POST['idBillet'], $_POST['pseudo'], $_POST['commentaire']);
 			}
 			else{
-				//var_dump($_POST['idBillet'], $_POST['pseuod'], $_POST['commentaire']);
 				listBilletsFront();
 			}
 			
 		}
 
 		elseif ($action == 'signalerCommentaire') {
-			if (!empty($_GET['commentaire'] && !empty($_GET['billet']))) {
+			if (!empty($_GET['commentaire']) && !empty($_GET['billet'])) {
 				signalerCommentaire($_GET['commentaire'], $_GET['billet']);
 			}
 			else{
@@ -125,7 +170,7 @@ if (isset($_GET['action']) || isset($_POST['action'])) {
 		}
 
 		else{
-			listBilletsFront();
+			require('views/404View.php');
 		}
 	}
 

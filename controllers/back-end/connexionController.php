@@ -3,7 +3,6 @@
 session_start();
 
 require('models/back-end/ConnexionManager.php');
-//require('models/back-end/class/Administrator.php');
 
 
 function connexion($pseudo, $mdp){
@@ -14,9 +13,7 @@ function connexion($pseudo, $mdp){
 		$idExist = $CoManager->checkIdCo($pseudo, $mdp_crypte);
 
 		if ($idExist == 1) {
-			//$admin = new Admin($pseudo, $mdp_crypte);
 			$_SESSION['pseudo'] = $pseudo;
-			//require_once('views/billetsView.php');
 			listBillets();
 		}
 		else{
