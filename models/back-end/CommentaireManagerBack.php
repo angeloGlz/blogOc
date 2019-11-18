@@ -20,15 +20,21 @@ Class CommentaireManagerBack extends Manager{
 
 	public function supprimerCom($idCom){
 		$db = $this->dbConnect();
-		$db->exec("DELETE FROM commentaires WHERE id = ". $idCom);
+
+		$req = $db->prepare('DELETE FROM commentaires WHERE id = :idCom');
+
+		$req->bindValue(':idCom', $idCom);
+
+		$req->execute();
 	}
 
 	public function designalerCom($idCom){
 		$db = $this->dbConnect();
 
-		$req = $db->prepare("UPDATE commentaires SET signaler = :signaler WHERE id ='".$idCom."'");
+		$req = $db->prepare('UPDATE commentaires SET signaler = :signaler WHERE id = :idCom ');
 
 		$req->bindValue(':signaler', 0);
+		$req->bindValue(':idCom', $idCom);
 
 		$req->execute();
 

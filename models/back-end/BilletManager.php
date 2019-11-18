@@ -19,7 +19,12 @@ class BilletManager extends Manager{
 
 	public function delete($idbillet){
 		$db = $this->dbConnect();
-		$db->exec('DELETE FROM billets WHERE id = '.$idbillet);
+
+		$req = $db->prepare('DELETE FROM billets WHERE id = :idbillet ');
+
+		$req->bindValue('idbillet', $idbillet);
+
+		$req->execute();
 	}
 
 
@@ -41,7 +46,11 @@ class BilletManager extends Manager{
 
 		$db = $this->dbConnect();
 
-		$req = $db->query("SELECT * FROM billets WHERE id = '".$id."'");
+		$req = $db->prepare('SELECT * FROM billets WHERE id = :id');
+
+		$req->bindValue(':id', $id);
+
+		$req->execute();
 
 		$donnees = $req->fetch(PDO::FETCH_ASSOC);
 
@@ -51,11 +60,15 @@ class BilletManager extends Manager{
 
 	}
 
-	public function checkTitleExist($title){
+	public function checkTitleExist($titre){
 
 		$db = $this->dbConnect();
 
-		$req = $db->query("SELECT titre FROM billets WHERE titre = '".$title."'");
+		$req = $db->prepare('SELECT titre FROM billets WHERE titre = :titre');
+
+		$req->bindValue(':titre', $titre);
+
+		$req->execute();
 
 		$nbTitle = $req->rowCount();
 

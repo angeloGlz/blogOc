@@ -11,7 +11,7 @@ if (isset($_GET['action']) || isset($_POST['action'])) {
 
 
 	if (!empty($_GET['action'])) {
-		$action = $_GET['action'];
+		$action = htmlspecialchars($_GET['action']);
 	} else {
 		// $action = $_POST['action'];
 		$action = "listBilletsFront";
@@ -40,7 +40,7 @@ if (isset($_GET['action']) || isset($_POST['action'])) {
 
 		elseif ($action == 'verification_billet') {
 			if (!empty($_POST['titre']) && !empty($_POST['texte']) && !empty($_FILES['image'])) {
-				checkBillet($_POST['titre'], $_POST['texte'], $_FILES['image']);
+				checkBillet(htmlspecialchars($_POST['titre']), htmlspecialchars($_POST['texte']), $_FILES['image']);
 			}	
 			else{
 				listBillets();
@@ -49,7 +49,7 @@ if (isset($_GET['action']) || isset($_POST['action'])) {
 
 		elseif ($action == 'supprimer_billet') {
 			if (!empty($_POST['idbillet'])) {
-				deleteBillet(intval($_POST['idbillet']));
+				deleteBillet(intval(htmlspecialchars($_POST['idbillet'])));
 			}
 			else{
 				listBillets();
@@ -59,7 +59,7 @@ if (isset($_GET['action']) || isset($_POST['action'])) {
 
 		elseif ($action == 'editer_billet'){
 			if (!empty($_POST['idbillet'])) {
-				getBillet(intval($_POST['idbillet']));
+				getBillet(intval(htmlspecialchars($_POST['idbillet'])));
 			}
 			else{
 				listBillets();
@@ -68,12 +68,12 @@ if (isset($_GET['action']) || isset($_POST['action'])) {
 		}
 
 		elseif ($action == 'sauvegarder_edition_billet'){
-			updateBillet(intval($_POST['idbillet']), ($_POST['title']), ($_POST['text']), ($_POST['image']), ($_FILES['newimage']));
+			updateBillet(intval(htmlspecialchars($_POST['idbillet'])), (htmlspecialchars($_POST['title'])), (htmlspecialchars($_POST['text'])), (htmlspecialchars($_POST['image'])), ($_FILES['newimage']));
 		}
 
 		elseif ($action == 'afficherChapitre') {
 			if (!empty($_GET['chapitre'])) {
-				checkChapitreExist($_GET['chapitre']);
+				checkChapitreExist(htmlspecialchars($_GET['chapitre']));
 			}
 			else{
 				listBilletsFront();
@@ -82,7 +82,7 @@ if (isset($_GET['action']) || isset($_POST['action'])) {
 
 		elseif ($action == 'signalerCommentaire') {
 			if (!empty($_GET['commentaire']) && !empty($_GET['billet'])) {
-				signalerCommentaire($_GET['commentaire'], $_GET['billet']);
+				signalerCommentaire(htmlspecialchars($_GET['commentaire']), htmlspecialchars($_GET['billet']));
 			}
 			else{
 				listBilletsFront();
@@ -91,7 +91,7 @@ if (isset($_GET['action']) || isset($_POST['action'])) {
 
 		elseif ($action == 'checkComExist') {
 			if (!empty($_POST['idBillet']) && !empty($_POST['pseudo']) && !empty($_POST['commentaire'])) {
-				checkComExist($_POST['idBillet'], $_POST['pseudo'], $_POST['commentaire']);
+				checkComExist(htmlspecialchars($_POST['idBillet']), htmlspecialchars($_POST['pseudo']), htmlspecialchars($_POST['commentaire']));
 			}
 			else{
 				listBilletsFront();
@@ -101,7 +101,7 @@ if (isset($_GET['action']) || isset($_POST['action'])) {
 
 		elseif ($action == 'designalerCommentaire') {
 			if (!empty($_POST['idCom'])) {
-				designalerCom($_POST['idCom']);
+				designalerCom(htmlspecialchars($_POST['idCom']));
 			}
 			else{
 				listBilletsFront();
@@ -110,7 +110,7 @@ if (isset($_GET['action']) || isset($_POST['action'])) {
 
 		elseif ($action == 'supprimerCommentaire') {
 			if (!empty($_POST['idCom'])) {
-				supprimerCom($_POST['idCom']);
+				supprimerCom(htmlspecialchars($_POST['idCom']));
 			}
 			else{
 				listBillets();
@@ -124,7 +124,7 @@ if (isset($_GET['action']) || isset($_POST['action'])) {
 	else{
 		if($action == 'connexion'){
 			if (!empty($_POST['pseudo']) && !empty($_POST['password'])) {
-				connexion($_POST['pseudo'], $_POST['password']);
+				connexion(htmlspecialchars($_POST['pseudo']), htmlspecialchars($_POST['password']));
 			}
 			else{
 				$_SESSION['error_co'] = "Un champ n'a pas été rempli";
@@ -138,7 +138,7 @@ if (isset($_GET['action']) || isset($_POST['action'])) {
 
 		elseif ($action == 'afficherChapitre') {
 			if (!empty($_GET['chapitre'])) {
-				checkChapitreExist($_GET['chapitre']);
+				checkChapitreExist(htmlspecialchars($_GET['chapitre']));
 			}
 			else{
 				listBilletsFront();
@@ -152,7 +152,7 @@ if (isset($_GET['action']) || isset($_POST['action'])) {
 
 		elseif ($action == 'checkComExist') {
 			if (!empty($_POST['idBillet']) && !empty($_POST['pseudo']) && !empty($_POST['commentaire'])) {
-				checkComExist($_POST['idBillet'], $_POST['pseudo'], $_POST['commentaire']);
+				checkComExist(htmlspecialchars($_POST['idBillet']), htmlspecialchars($_POST['pseudo']), htmlspecialchars($_POST['commentaire']));
 			}
 			else{
 				listBilletsFront();
@@ -162,7 +162,7 @@ if (isset($_GET['action']) || isset($_POST['action'])) {
 
 		elseif ($action == 'signalerCommentaire') {
 			if (!empty($_GET['commentaire']) && !empty($_GET['billet'])) {
-				signalerCommentaire($_GET['commentaire'], $_GET['billet']);
+				signalerCommentaire(htmlspecialchars($_GET['commentaire']), htmlspecialchars($_GET['billet']));
 			}
 			else{
 				listBilletsFront();

@@ -22,12 +22,11 @@ Class CommentaireManager extends Manager{
 	public function checkIdBillet($idbillet){
 		$db = $this->dbConnect();
 
-		$req = $db->query("SELECT * FROM billets WHERE id ='".$idbillet."'");
+		$req = $db->prepare('SELECT * FROM billets WHERE id = :idbillet');
 
-		$donnees = $req->fetch(PDO::FETCH_ASSOC);
+		$req->bindValue(':idbillet', $idbillet);
 
-		return $donnees;
-
+		return $req->execute();
 	}
 
 
@@ -35,7 +34,11 @@ Class CommentaireManager extends Manager{
 		$db = $this->dbConnect();
 		$listeComChapitre = [];
 
-		$req = $db->query("SELECT * FROM commentaires WHERE idbillet ='".$idbillet."'");
+		$req = $db->prepare("SELECT * FROM commentaires WHERE idbillet = :idbillet");
+
+		$req->bindValue(':idbillet', $idbillet);
+
+		$req->execute();
 
 		while ($donnees = $req->fetch(PDO::FETCH_ASSOC)){
 			$listeComChapitre[] = new Commentaire($donnees);
@@ -47,9 +50,10 @@ Class CommentaireManager extends Manager{
 	public function signaler($idcom){
 		$db = $this->dbConnect();
 
-		$req = $db->prepare("UPDATE commentaires SET signaler = :signaler WHERE id ='".$idcom."'");
+		$req = $db->prepare("UPDATE commentaires SET signaler = :signaler WHERE id = :idcom");
 
 		$req->bindValue(':signaler', 1);
+		$req->bindValue(':idcom', $idcom);
 
 		$req->execute();
 
@@ -59,12 +63,17 @@ Class CommentaireManager extends Manager{
 	public function checkComExist($idbillet, $pseudo, $commentaire){
 		$db = $this->dbConnect();
 
-		$req = $db->query("SELECT * FROM commentaires WHERE idbillet = '". $idbillet ."' AND commentaire ='". $commentaire ."' AND pseudo = '". $pseudo."'");
+		$req = $db->prepare("SELECT * FROM commentaires WHERE idbillet = :idbillet AND commentaire = :commentaire AND pseudo = :pseudo");
 
-		$donnees = $req->rowCount();
+		$req->bindValue('idbillet', $idbillet);
+		$req->bindValue('commentaire', $commentaire);
+		$req->bindValue('pseudo', $pseudo);
+
+		$req->execute();
+
+		$donnees = $req->rowCount();	
 
 		return $donnees;
-
 	}
 
 
