@@ -68,10 +68,10 @@ class Billet {
 	}
 
 	public function setTexte($texte){
-		$texte_nohtml_espace = str_replace(CHR(32),"", strip_tags($texte));
-		$texte_no_nbsp = str_replace("&nbsp;", "", $texte_nohtml_espace);
-		if (!empty($texte_no_nbsp)) {
-			if (is_string($texte_no_nbsp)) {
+		$texteSansHtml = strip_tags(html_entity_decode($texte));
+
+		if (!empty($texteSansHtml) && $texteSansHtml != " ") {
+			if (is_string($texte)) {
 				$this->_texte = $texte;
 			}
 			else{
@@ -81,7 +81,7 @@ class Billet {
 		else{
 			$_SESSION['error_billet'] = "Le texte est obligatoire";
 		}
-	}
+	} 
 
 
 

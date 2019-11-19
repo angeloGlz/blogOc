@@ -465,10 +465,22 @@ table a, #comments a{background-color:inherit;}
     margin-top: 30px;
 }
 
+.imgChapitreView{
+	margin-bottom: 25px;
+}
 
+.titreChapitreView{
+	margin-bottom: 25px;
+}
 
+.titreBlocCom{
+	margin-bottom: 40px;
+	text-align: center;
+}
 
-
+.blocForm{
+	margin-top: 60px;
+}
 
 
 

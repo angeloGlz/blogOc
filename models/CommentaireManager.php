@@ -34,7 +34,7 @@ Class CommentaireManager extends Manager{
 		$db = $this->dbConnect();
 		$listeComChapitre = [];
 
-		$req = $db->prepare("SELECT * FROM commentaires WHERE idbillet = :idbillet");
+		$req = $db->prepare("SELECT id, idbillet, commentaire, pseudo, signaler, DATE_FORMAT(date, '%d/%m/%Y %Hh%i') AS date FROM commentaires WHERE idbillet = :idbillet");
 
 		$req->bindValue(':idbillet', $idbillet);
 
@@ -76,7 +76,13 @@ Class CommentaireManager extends Manager{
 		return $donnees;
 	}
 
+	public function deleteAllComFromOneBillet($idbillet){
 
+		$db = $this->dbConnect();
+
+		$db->exec('DELETE FROM commentaires WHERE idbillet ='. $idbillet);
+
+	}
 
 }
 

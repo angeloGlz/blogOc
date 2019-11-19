@@ -13,7 +13,6 @@ if (isset($_GET['action']) || isset($_POST['action'])) {
 	if (!empty($_GET['action'])) {
 		$action = htmlspecialchars($_GET['action']);
 	} else {
-		// $action = $_POST['action'];
 		$action = "listBilletsFront";
 	}
 

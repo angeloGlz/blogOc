@@ -6,7 +6,7 @@ Author URI: http://www.os-templates.com/
 Licence: Free to use under our free template licence terms
 Licence URI: http://www.os-templates.com/template-terms
 -->
-<html>
+<html lang="fr">
 <head>
 <title>Jean Forteroche</title>
 <meta charset="utf-8">
@@ -73,7 +73,7 @@ Licence URI: http://www.os-templates.com/template-terms
     </div>
     <ul class="d-flex">
       <li class="col-4">
-        <img src="public/images/forteroche.jpg">
+        <img src="public/images/forteroche.jpg" alt="Portrait de Jean Rochefort">
       </li>
       <li class="col-6">
         <p>

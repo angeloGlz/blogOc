@@ -56,6 +56,10 @@
 
 		$billetManager->delete($idbillet);
 
+		$commentaireManager = new CommentaireManager;
+
+		$commentaireManager->deleteAllComFromOneBillet($idbillet);
+
 		listBillets();
 	}
 
@@ -73,7 +77,6 @@
 		
 
 		if ($billet == null || $billet == false) {
-			var_dump($billet);
 			listBillets();
 		}
 		else{
@@ -118,7 +121,7 @@
 			getBillet($billet->id());
 		}
 		
-		//require('views/editBillet.php');
+		//require('views/back-end/editBillet.php');
 	}
 	
 

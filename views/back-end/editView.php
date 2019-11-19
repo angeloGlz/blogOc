@@ -40,11 +40,7 @@
                       <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
                         <ul class="nav navbar-nav">
                           <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Mon compte <b class="caret"></b></a>
-                            <ul class="dropdown-menu animated fadeInUp">
-                              <li><a href="profile.html"> Profile </a></li>
-                              <li><a href="login.html"> Déconnexion </a></li>
-                            </ul>
+                            <a href="controllers/back-end/deconnexion.php"> Déconnexion </a>
                           </li>
                         </ul>
                       </nav>
@@ -60,10 +56,10 @@
             <div class="sidebar content-box" style="display: block;">
                 <ul class="nav">
                     <!-- Main menu -->
-                    <li class="current"><a href="index.php?action=page_liste_billets"><i class="glyphicon glyphicon-home"></i> billets</a></li>
+                    <li class="current"><a href="index.php?action=page_liste_billets"><i class="glyphicon glyphicon-book"></i> billets</a></li>
                     <li><a href="index.php?action=page_liste_commentaires"><i class="glyphicon glyphicon-envelope"></i> Commentaires</a></li>
                     <li><a href="index.php?action=page_publier_billet"><i class="glyphicon glyphicon-pencil"></i> Publier</a></li>
-                    <li><a href="index.php"><i class="glyphicon glyphicon-pencil"></i> Revenir sur le site</a></li>
+                    <li><a href="index.php"><i class="glyphicon glyphicon-home"></i> Revenir sur le site</a></li>
                 </ul>
              </div>
            </div>
@@ -82,8 +78,9 @@
                      <?php 
                             if (!empty($_SESSION['error_billet'])) {
                               echo "<div class='erreur'>". $_SESSION['error_billet'] ."</div>";
+                              unset($_SESSION['error_billet']);
                             }
-                             unset($_SESSION['error_billet']);
+                             
                         ?>
 
                     <form method="POST" action="index.php?action=sauvegarder_edition_billet" id="formSummerNote" enctype="multipart/form-data">

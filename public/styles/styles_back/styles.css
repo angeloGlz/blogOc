@@ -652,101 +652,6 @@ body {
 }
 
 
-
-
-/*CSS perso*/
-
-
-.btn_publication{
-  margin-top: 10px;
-}
-
-#formSummerNote {
-  margin-top: 40px;
-}
-
-.note-editor{
-  margin-top: 10px;
-}
-
-.listBillets{
-  width: 78%;
-  float: right;
-  margin-right: 3%;
-}
-
-.billet{
-  background-color: white;
-  color: black;
-  padding: 5px 5px 5px 10px;
-  border: solid white 2px;
-  height: 158px;
-}
-
-.titleH2{
-  width: 78%;
-  float: right;
-  margin-right: 3%;
-}
-
-.titreBillet{
-  margin: 0;
-  margin-bottom: 10px;
-}
-
-.blocBtnBillet{
-  height: 28px;
-}
-
-.blocBtnBillet form{
-  width: 78px;
-  float: left;
-}
-
-.inputFile{
-  margin-top: 10px;
-}
-
-.imgBillet{
-  width: 20%;
-  float: right;
-}
-
-.imgBilletEdit{
-  width: 20%;
-  margin-top: 10px;
-}
-
-.imgBilletEdit img{
-  width: 220px;
-  height: 143px;
-}
-
-.imgBillet img{
-  width: 220px;
-  height: 143px;
-}
-
-.texteBillet{
-  width: 75%;
-  display: inline-block;
-}
-
-.inputTitle{
-  border: 1px solid #a9a9a9;
-  padding-left: 10px;
-  width: 200px;
-}
-
-
-
-
-
-
-
-
-
-
 /* css page connexion */
 
 body {
@@ -760,18 +665,6 @@ a {
   text-decoration: none;
   font-weight: 400;
 }
-
-/*h2 {
-  text-align: center;
-  font-size: 16px;
-  font-weight: 600;
-  text-transform: uppercase;
-  display:inline-block;
-  margin: 40px 8px 10px 8px; 
-  color: #cccccc;
-}
-
-*/
 
 /* STRUCTURE */
 
@@ -821,32 +714,6 @@ h2.active {
   border-bottom: 2px solid #5fbae9;
 }
 
-
-
-/* FORM TYPOGRAPHY*/
-
-/*input[type=button], input[type=submit], input[type=reset]  {
-  background-color: #56baed;
-  border: none;
-  color: white;
-  padding: 15px 80px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  text-transform: uppercase;
-  font-size: 13px;
-  -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
-  box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
-  -webkit-border-radius: 5px 5px 5px 5px;
-  border-radius: 5px 5px 5px 5px;
-  margin: 5px 20px 40px 20px;
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}*/
-
 input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
   background-color: #39ace7;
 }
@@ -859,27 +726,7 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
   transform: scale(0.95);
 }
 
-/*input[type=text] {
-  background-color: #f6f6f6;
-  border: none;
-  color: #0d0d0d;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 5px;
-  width: 85%;
-  border: 2px solid #f6f6f6;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -ms-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
-  -webkit-border-radius: 5px 5px 5px 5px;
-  border-radius: 5px 5px 5px 5px;
-}
-*/
+
 input[type=text]:focus {
   background-color: #fff;
   border-bottom: 2px solid #5fbae9;
@@ -1010,6 +857,94 @@ input[type=text]:placeholder {
   padding-left: 31px;
 }
 
+
+/*CSS perso*/
+
+
+.btn_publication{
+  margin-top: 10px;
+}
+
+#formSummerNote {
+  margin-top: 40px;
+}
+
+.note-editor{
+  margin-top: 10px;
+}
+
+.listBillets{
+  width: 78%;
+  float: right;
+  margin-right: 3%;
+}
+
+.billet{
+  background-color: white;
+  color: black;
+  padding: 5px 5px 5px 10px;
+  border: solid white 2px;
+}
+
+.billet img{
+    width: 215px;
+    height: 145px;
+    float: right;
+    margin-left: 15px;
+}
+
+.titleH2{
+  width: 78%;
+  float: right;
+  margin-right: 3%;
+}
+
+.titreBillet{
+  margin: 0;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.blocBtnBillet{
+  height: 28px;
+}
+
+.blocBtnBillet form{
+  width: 78px;
+  float: left;
+}
+
+.inputFile{
+  margin-top: 10px;
+}
+
+.imgBillet{
+  width: 20%;
+  float: right;
+}
+
+.imgBilletEdit{
+  width: 20%;
+  margin-top: 10px;
+}
+
+.imgBilletEdit img{
+  width: 220px;
+  height: 143px;
+}
+
+.texteBillet{
+  width: 75%;
+  display: inline-block;
+}
+
+.inputTitle{
+  border: 1px solid #a9a9a9;
+  padding-left: 10px;
+  width: 200px;
+}
+
+
 .bloc_com{
   width: 78%;
   float: right;
@@ -1017,9 +952,12 @@ input[type=text]:placeholder {
 }
 
 .bloc_btn{
-  width: 14%;
   display: flex;
   justify-content: space-around;
+}
+
+.bloc_btn > form{
+  margin-right: 3px;
 }
 
 .bloc_com button{
@@ -1065,4 +1003,36 @@ input[type=text]:placeholder {
   font-size: 13px;
 }
 
+
+
+@media screen and (max-width: 991px)
+{
+    .listBillets{
+        width: 98%;
+        float: right;
+        margin-right: 1%;
+    }
+
+    .titleH2{
+      width: 100%;
+      text-align: center;
+    }
+
+    .bloc_com{
+      width: 98%;
+      float: right;
+      margin-right: 1%;
+    }
+
+    
+}
+
+
+@media screen and (max-width: 731px)
+{
+    .titreBillet{
+      display: block;
+    }
+
+}
 
