@@ -1,5 +1,6 @@
 <?php
 
+
 class Billet {
 
 	private $_id;
@@ -89,40 +90,43 @@ class Billet {
 		if (is_string($image)) {
 			$this->_image = $image;
 		}
-		elseif (is_array($image)) {
-			if ($image['error'] == 0) {
-				if (is_array($image)) {
-					$extensions = array('jpg','png','jpeg');
-					$fileExt = explode('.', $image['name']);
-					$fileActualExt = strtolower(end($fileExt));
-					if (in_array($fileActualExt, $extensions)) {
-						if ($image['size'] <= 1000000) {
-							$newNameFile = uniqid().".".$fileActualExt;
-							$fileDestination = 'public/images/'.$newNameFile;
-							move_uploaded_file($image['tmp_name'], $fileDestination);
+		elseif ($image['size'] > 0) {
+			if (is_array($image)) {
+				if ($image['error'] == 0) {
+					if (is_array($image)) {
+						$extensions = array('jpg','png','jpeg');
+						$fileExt = explode('.', $image['name']);
+						$fileActualExt = strtolower(end($fileExt));
+						if (in_array($fileActualExt, $extensions)) {
+							if ($image['size'] <= 1000000) {
+								$newNameFile = uniqid().".".$fileActualExt;
+								$fileDestination = 'public/images/'.$newNameFile;
+								move_uploaded_file($image['tmp_name'], $fileDestination);
 
-							$this->_image = $newNameFile;
+								$this->_image = $newNameFile;
+							}
+							else{
+								$_SESSION['error_billet'] = "le poid de l'image est superieur à celui autorisé";
+							}
 						}
 						else{
-							$_SESSION['error_billet'] = "le poid de l'image est superieur à celui autorisé";
+							$_SESSION['error_billet'] = "Le fichier doit être une image";
 						}
 					}
-					else{
-						$_SESSION['error_billet'] = "Le fichier doit être une image";
-					}
+				}else{
+					$_SESSION['error_billet'] = "Une erreur est survenu";
 				}
-			}else{
-				$this->_image = NULL;
 			}
+			else{
+				$_SESSION['error_billet'] = "Une erreur est survenu";
+			}
+		
+		}
+		else{
+			$_SESSION['error_billet'] = "L'image est obligatoire";
 		}
 		
 		
-	}
-
-    
-
-	public function __toString(){
-		return "To string par défaut : ".$this->_titre. "<br/>";
 	}
 
 }

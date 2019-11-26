@@ -884,6 +884,8 @@ input[type=text]:placeholder {
   color: black;
   padding: 5px 5px 5px 10px;
   border: solid white 2px;
+  position: relative;
+  min-height: 195px;
 }
 
 .billet img{
@@ -907,6 +909,8 @@ input[type=text]:placeholder {
 
 .blocBtnBillet{
   height: 28px;
+  bottom: 0;
+  position: absolute;
 }
 
 .blocBtnBillet form{
@@ -1023,6 +1027,11 @@ input[type=text]:placeholder {
       float: right;
       margin-right: 1%;
     }
+
+    .textEtbtn p {
+      margin-bottom: 50px !important;
+    }
+
 
     
 }

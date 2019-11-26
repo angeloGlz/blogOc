@@ -179,6 +179,11 @@ address, article, aside, figcaption, figure, footer, header, main, nav, section{
 }
 
 
+.erreur_commentaire{
+	color: red;
+}
+
+
 
 
 

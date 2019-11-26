@@ -68,23 +68,37 @@ Class Commentaire{
 	}
 
 	public function setPseudo($pseudo){
-
-			if (strlen($pseudo) <= 30) {
-				$this->_pseudo = $pseudo;
+		if (is_string($pseudo)) {
+			if (!empty($pseudo)) {
+				if (strlen($pseudo) <= 30) {
+					$this->_pseudo = $pseudo;
+				}
+				else{
+					$_SESSION['erreur_commentaire'] = "Le pseudo ne doit pas contenir plus de 30 caractères";
+				}
 			}
 			else{
-				$_SESSION['erreur_commentaire'] = "Le pseudo ne doit pas contenir plus de 30 caractères";
+				$_SESSION['erreur_commentaire'] = "Le champ pseudo est obligatoire";
 			}
+		}
+		else{
+			$_SESSION['erreur_commentaire'] = "Une erreur est survenue";
+		}
 
 	}
 
 	public function setCommentaire($commentaire){
 		if (is_string($commentaire)) {
-			if (strlen($commentaire) <= 500) {
-				$this->_commentaire = $commentaire;
+			if (!empty($commentaire)) {
+				if (strlen($commentaire) <= 500) {
+					$this->_commentaire = $commentaire;
+				}
+				else{
+					$_SESSION['erreur_commentaire'] = "Le commentaire ne doit pas contenir plus de 500 caractères";
+				}
 			}
 			else{
-				$_SESSION['erreur_commentaire'] = "Le commentaire ne doit pas contenir plus de 500 caractères";
+				$_SESSION['erreur_commentaire'] = "Le champ commentaire est obligatoire";
 			}
 		}
 		else{

@@ -77,12 +77,16 @@ Licence URI: http://www.os-templates.com/template-terms
     </div>
 
     <div class="blocForm">
-        <form method="POST" action="index.php?action=checkComExist">
-            <label>Pseudo
-                <input type="text" name="pseudo" class="inputFront" required="true">
+        <?php 
+            if (!empty($_SESSION['erreur_commentaire'])) { ?>
+              <div class="erreur_commentaire"><?php echo $_SESSION['erreur_commentaire']; unset($_SESSION['erreur_commentaire']); ?></div>
+         <?php } ?>
+        <form method="POST" action="index.php?action=checkComExist" class="formCom">
+            <label for="pseudo">Pseudo
+                <input type="text" name="pseudo" class="inputFront" required="true" placeholder="(maximum 30 caractères)">
             </label>
-            <label>Commentaire
-                <textarea name="commentaire" class="inputFront textareaFront" required="true"></textarea> 
+            <label for="commentaire">Commentaire
+                <textarea name="commentaire" class="inputFront textareaFront" required="true" placeholder="(maximum 500 caractères)"></textarea> 
             </label> 
             <input type="hidden" name="idBillet" value="<?php echo $billet1->id(); ?>">
             <input type="submit" name="btnPublierCom" value="Publier">

@@ -37,7 +37,7 @@
 	                  <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
 	                    <ul class="nav navbar-nav">
 	                      <li class="dropdown">
-	                        <a href="controllers/back-end/deconnexion.php"> Déconnexion </a>
+	                        <a href="controllers/deconnexion.php"> Déconnexion </a>
 	                      </li>
 	                    </ul>
 	                  </nav>
@@ -65,8 +65,11 @@
 			<?php 
 				foreach($listBillets as $billet){ ?>
 					<div class="billet">
-						
-							<h3 class="titreBillet"> <?php echo $billet->titre(); ?> </h3>
+						<?php 
+							echo "<h3 class='titreBillet'>".$billet->titre()."</h3>";
+						?>
+						<div class="textEtbtn">
+							
 						<?php
 							$billetWhithHTML = $billet->texte();
 							$billetTextNoHTML = strlen(strip_tags($billet->texte()));
@@ -74,27 +77,24 @@
 							if (!empty($billet->image())) {
 								echo '<img src="public/images/'.$billet->image().'">';
 							}  
-							
 
 							if ($billetTextNoHTML <= 700) {
 								echo("<p>". $billetWhithHTML ."</p>");
 							} 
 							else{
-								echo substr($billetWhithHTML, 0, 700) ?> <a href="#">afficher la suite ...</a></br> <?php 
+								echo substr($billetWhithHTML, 0, 700) ?> <a href="index.php?action=page_billet&billet=<?php echo $billet->id() ?>">afficher la suite ...</a></br> <?php 
 							}
 						?>
-
-						<div class="blocBtnBillet">
-							<form method="POST" action="index.php?action=supprimer_billet">
-								<!-- <input type="hidden" name="action" value="delete"> -->
-								<input type="hidden" name="idbillet" value="<?php echo $billet->id(); ?>">
-								<input type="submit" class="submitDelete" value="supprimer">
-							</form>
-							<form method="POST" action="index.php?action=editer_billet">
-								<!-- <input type="hidden" name="action" value="edit"> -->
-								<input type="hidden" name="idbillet" value="<?php echo $billet->id(); ?>">
-								<input type="submit" value="modifier">
-							</form>
+							<div class="blocBtnBillet">
+								<form method="POST" action="index.php?action=supprimer_billet">
+									<input type="hidden" name="idbillet" value="<?php echo $billet->id(); ?>">
+									<input type="submit" class="submitDelete" value="supprimer">
+								</form>
+								<form method="POST" action="index.php?action=editer_billet">
+									<input type="hidden" name="idbillet" value="<?php echo $billet->id(); ?>">
+									<input type="submit" value="modifier">
+								</form>
+							</div>
 						</div>
 					</div></br>
 			<?php } ?>

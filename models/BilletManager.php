@@ -33,7 +33,7 @@ class BilletManager extends Manager{
 		$db = $this->dbConnect();
 		$listeBillets = [];
 
-		$req = $db->query('SELECT * FROM billets ORDER BY titre DESC');
+		$req = $db->query('SELECT * FROM billets ORDER BY `date` ');
 
 		while ($donnees = $req->fetch(PDO::FETCH_ASSOC)) {
 			$listeBillets[] = new Billet($donnees);
@@ -53,10 +53,16 @@ class BilletManager extends Manager{
 		$req->execute();
 
 		$donnees = $req->fetch(PDO::FETCH_ASSOC);
-
-		$billet = new Billet($donnees);
-
-		return $billet;
+		if ($donnees != false) {
+			$billet = new Billet($donnees);
+			return $billet;
+		}
+		else{
+			return false;
+		}
+		
+		//var_dump($billet);
+		
 
 	}
 

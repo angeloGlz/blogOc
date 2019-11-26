@@ -10,7 +10,7 @@ Licence URI: http://www.os-templates.com/template-terms
 <head>
 <title>Jean Forteroche</title>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width">
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <link href="public/styles/styles_front/layout.css" rel="stylesheet" type="text/css" media="all">
 </head>
@@ -31,9 +31,9 @@ Licence URI: http://www.os-templates.com/template-terms
       <nav id="mainav" class="fl_right">
         <ul class="clear">
           <li class="active"><a href="index.php">Accueil</a></li>
-          <li><a class="drop" href="#">Biographie</a>
+          <li><a class="drop" href="#biographie">Biographie</a>
           </li>
-          <li><a class="drop" href="#">Chapitres</a>
+          <li><a class="drop" href="#chapitres">Chapitres</a>
           </li>
           <li><a class="drop" href="index.php?action=page_connexion">Admin</a>
           </li>
@@ -52,7 +52,7 @@ Licence URI: http://www.os-templates.com/template-terms
       <p>Venez découvrir mon nouveau roman en ligne publié chapitre par chapitre !</p>
       <footer>
         <ul class="nospace inline pushright">
-          <li><a class="btn" href="#">lire le roman</a></li>
+          <li><a class="btn" href="#chapitres">lire le roman</a></li>
         </ul>
       </footer>
     </div>
@@ -64,7 +64,7 @@ Licence URI: http://www.os-templates.com/template-terms
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
-<div class="wrapper row3 bloc_bio">
+<div class="wrapper row3 bloc_bio" id="biographie">
   <main class="hoc container clear"> 
     <!-- main body -->
     <!-- ################################################################################################ -->
@@ -101,7 +101,7 @@ Licence URI: http://www.os-templates.com/template-terms
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
-<div class="wrapper row3 bloc_chapitres">
+<div class="wrapper row3 bloc_chapitres" id="chapitres">
   <section class="hoc container clear"> 
     <!-- ################################################################################################ -->
     <div class="sectiontitle center">
@@ -121,7 +121,6 @@ Licence URI: http://www.os-templates.com/template-terms
       <?php } ?>
 
     </div>
-    <footer class="center"><a class="btn" href="#">Commander le livre papier</a></footer>
     <!-- ################################################################################################ -->
   </section>
 </div>

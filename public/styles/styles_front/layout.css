@@ -417,6 +417,11 @@ table a, #comments a{background-color:inherit;}
 
 /*css perso*/
 
+html{
+	scroll-behavior: smooth;
+}
+
+
 .bloc_bio ul {
 	padding: 0;
 	list-style-type: none;

@@ -2,7 +2,7 @@
 
 session_start();
 
-require('models/back-end/ConnexionManager.php');
+require('models/ConnexionManager.php');
 
 
 function connexion($pseudo, $mdp){

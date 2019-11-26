@@ -1,5 +1,5 @@
 <?php
-	require('models/back-end/BilletManager.php');
+	require('models/BilletManager.php');
 	require('class/Billet.php');
 
 	function listBillets(){
@@ -15,7 +15,7 @@
 
 		$billetManager = new BilletManager();
 		$nbtitle = $billetManager->checkTitleExist($titre);
-		//var_dump($image);
+
 		if ($nbtitle == 0) {
 			$billet = new Billet([
 				'titre' => $titre,
@@ -31,12 +31,11 @@
 	}
 
 	function publication(Billet $billet){
-		if (!empty($billet->titre()) && !empty($billet->texte())) {
+		if (!empty($billet->titre()) && !empty($billet->texte()) && !empty($billet->image())) {
 
 			$billetManager = new BilletManager();
 
 			$billetManager->add($billet);
-
 			listBillets();
 		}
 		else{
@@ -45,6 +44,9 @@
 			}
 			if (!empty($billet->texte())) {
 				$_SESSION['texte'] = $billet->texte();
+			}
+			if (!empty($billet->image())) {
+				$_SESSION['image'] = $billet->image();
 			}
 			publierBillet();
 		}
@@ -125,9 +127,55 @@
 	}
 	
 
+	function billet($idbillet){
+		$billetManager = new BilletManager();
+		$billet = $billetManager->getOneBillet($idbillet);
+
+		if ($billet == false) {
+			listBillets();
+		}
+		else{
+			$billet1 = $billet;
+			require('views/back-end/billetView.php');
+		}
+	}
 
 
 
+	function afficherChapitre($idbillet){
+		$billetsManager = new BilletManager();
+
+		$billet = $billetsManager->getOneBillet($idbillet);
+
+		if ($billet == false) {
+			require('views/404View.php');
+		}
+		else{
+			$billet1 = $billet;
+
+			$commentaireManager = new CommentaireManager();
+			$listeComChapitre = $commentaireManager->getComChapitre($idbillet);
+
+			if ($listeComChapitre == NULL) {
+				require('views/chapitreView.php');
+			}
+			else{
+				$comChapitre = $listeComChapitre;
+				require('views/chapitreView.php');
+			}		
+		}
+	}
+
+	function checkChapitreExist($idbillet){
+		$commentaireManager = new CommentaireManager();
+
+		if(!empty($commentaireManager->checkIdBillet($idbillet))){
+			afficherChapitre($idbillet);
+		}
+		else{
+			require('views/404View.php');
+		}
+	}
 
 
 

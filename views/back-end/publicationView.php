@@ -40,7 +40,7 @@
                       <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
                         <ul class="nav navbar-nav">
                           <li class="dropdown">
-                            <a href="controllers/back-end/deconnexion.php"> Déconnexion </a>
+                            <a href="controllers/deconnexion.php"> Déconnexion </a>
                           </li>
                         </ul>
                       </nav>

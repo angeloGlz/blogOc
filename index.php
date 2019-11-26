@@ -1,13 +1,17 @@
 
 <?php
 
-require('controllers/back-end/billetsController.php');
-require('controllers/back-end/connexionController.php');
-require('controllers/back-end/commentairesControllerBack.php');
+require('controllers/billetsController.php');
+require('controllers/connexionController.php');
+require('controllers/commentairesController.php');
 require('controllers/frontController.php');
 
 
-if (isset($_GET['action']) || isset($_POST['action'])) {
+//Chaque action fait sur le site fera passer une variable GET nomé action
+//En fonction de cette action on appelera la fonction souhaité d'un controlleur.
+
+
+if (isset($_GET['action'])) {
 
 
 	if (!empty($_GET['action'])) {
@@ -35,6 +39,10 @@ if (isset($_GET['action']) || isset($_POST['action'])) {
 
 		elseif ($action == 'page_publier_billet') {
 			publierBillet();
+		}
+
+		elseif ($action == 'page_billet') {
+			billet(htmlspecialchars($_GET['billet']));
 		}
 
 		elseif ($action == 'verification_billet') {

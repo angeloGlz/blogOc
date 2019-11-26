@@ -5,4 +5,6 @@ $(".submitDelete").on("click", function(){
 	else{
 		return false;
 	}
-})
+});
+
+
